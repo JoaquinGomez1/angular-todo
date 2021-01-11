@@ -1,0 +1,13 @@
+<style>
+  .todo-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
+
+<div>
+  <app-add-item></app-add-item>
+  <div class="todo-container" *ngFor="let todo of todos">
+    <app-todo-card [todo]="todo"></app-todo-card>
+  </div>
+</div>

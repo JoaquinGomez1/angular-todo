@@ -1,0 +1,28 @@
+<style>
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: antiquewhite;
+    padding: 1.2rem;
+    margin: 0.4rem;
+  }
+
+  input[type="checkbox"] {
+    zoom: 2;
+  }
+
+  .is-completed {
+    text-decoration: line-through;
+  }
+</style>
+
+<div [ngClass]="setClasses()" (click)="onChange(todo)">
+  <h3>{{ todo.text }}</h3>
+  <input
+    type="checkbox"
+    (change)="onChange(todo)"
+    [attr.checked]="todo.completed ? '' : null"
+  />
+</div>

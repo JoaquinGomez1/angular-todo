@@ -1,0 +1,42 @@
+<style>
+  .search-bar {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    justify-content: space-between;
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .search-input {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid rgba(90, 90, 90, 0.2);
+  }
+
+  .btn {
+    padding: 1.2rem;
+    border-radius: 5px;
+    margin-left: 20px;
+    background-color: red;
+    color: white;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+  }
+  .btn:hover {
+    background-color: brown;
+    cursor: pointer;
+  }
+</style>
+
+<div class="search-bar todo-container">
+  <input
+    type="text"
+    placeholder="Add todo"
+    (change)="setText($event.target.value)"
+    class="search-input"
+  />
+  <div class="btn" (click)="addTodo()">+</div>
+</div>
