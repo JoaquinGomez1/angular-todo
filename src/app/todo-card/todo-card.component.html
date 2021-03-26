@@ -11,18 +11,42 @@
 
   input[type="checkbox"] {
     zoom: 2;
+    background-color: lime;
   }
 
   .is-completed {
     text-decoration: line-through;
+    background-color: rgb(91, 248, 162);
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    width: 7rem;
+    align-items: center;
+  }
+  .delete_button {
+    padding: 0.6rem 0.8rem;
+    color: white;
+    background-color: maroon;
+    border-radius: 30%;
+    cursor: pointer;
+    text-decoration: none !important;
+    user-select: none;
+  }
+  .delete_button:hover {
+    background-color: mediumvioletred;
   }
 </style>
 
 <div [ngClass]="setClasses()" (click)="onChange(todo)">
   <h3>{{ todo.text }}</h3>
-  <input
-    type="checkbox"
-    (change)="onChange(todo)"
-    [attr.checked]="todo.completed ? '' : null"
-  />
+  <div class="actions">
+    <input
+      type="checkbox"
+      (change)="onChange(todo)"
+      [attr.checked]="todo.completed ? true : null"
+    />
+    <div class="delete_button" (click)="onDelete(todo.id)">X</div>
+  </div>
 </div>

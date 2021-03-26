@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../models/Todo';
-
-export const todosList = [
-  { id: '1', text: 'Learn Vue', completed: false },
-  { id: '2', text: 'Learn Angular', completed: false },
-  { id: '2', text: 'Learn React', completed: true },
-];
+import { TodosService } from '../../services/todos.service';
 
 @Component({
   selector: 'app-todos',
@@ -15,9 +10,9 @@ export const todosList = [
 export class TodosComponent implements OnInit {
   todos: Todo[];
 
-  constructor() {}
+  constructor(private myTodos: TodosService) {}
 
   ngOnInit(): void {
-    this.todos = todosList;
+    this.todos = this.myTodos.todos;
   }
 }

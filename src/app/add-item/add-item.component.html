@@ -35,8 +35,10 @@
   <input
     type="text"
     placeholder="Add todo"
-    (change)="setText($event.target.value)"
     class="search-input"
+    name="inputName"
+    [(ngModel)]="inputName"
+    (keydown)="onKeydown($event)"
   />
   <div class="btn" (click)="addTodo()">+</div>
 </div>

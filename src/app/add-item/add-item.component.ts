@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../models/Todo';
-
-import { todosList } from '../todos/todos.component';
+import { TodosService } from '../../services/todos.service';
 
 @Component({
   selector: 'app-add-item',
@@ -9,14 +7,20 @@ import { todosList } from '../todos/todos.component';
   styleUrls: ['./add-item.component.css'],
 })
 export class AddItemComponent implements OnInit {
-  text: string;
+  text: string = '';
+  inputName: string;
 
-  constructor() {}
+  constructor(private todoList: TodosService) {}
 
   ngOnInit(): void {}
 
-  setText(textVal) {
+  onKeydown(event) {
+    const textVal = event.target.value;
     this.text = textVal;
+
+    if (event.key === 'Enter') {
+      this.addTodo();
+    }
   }
 
   addTodo() {
@@ -26,6 +30,7 @@ export class AddItemComponent implements OnInit {
       completed: false,
     };
 
-    todosList.push(todo);
+    this.inputName = '';
+    this.todoList.todos.push(todo);
   }
 }

@@ -8,6 +8,9 @@ import { Todo } from '../models/Todo';
 })
 export class TodoCardComponent implements OnInit {
   @Input() todo: Todo;
+  @Input() todos: any[];
+  inputCheckbox: object;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -23,5 +26,15 @@ export class TodoCardComponent implements OnInit {
 
   onChange(todo: Todo) {
     todo.completed = !todo.completed;
+
+    this.inputCheckbox = {
+      ...this.inputCheckbox,
+      checked: todo.completed ? true : undefined,
+    };
+  }
+
+  onDelete(id: string) {
+    const todoIndex = this.todos.findIndex((todo) => todo.id === id);
+    this.todos.splice(todoIndex, 1);
   }
 }
